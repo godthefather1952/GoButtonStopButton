@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Colorful Button Example</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      transition: background-color 0.5s ease;
+    }
+
+    .blue-button {
+      padding: 20px 40px;
+      font-size: 20px;
+      color: white;
+      background-color: blue;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    .yellow-button {
+      background-color: yellow;
+      color: blue;
+    }
+
+    .black-button {
+      background-color: black;
+      color: red;
+    }
+
+    .red-button {
+      background-color: red;
+      color: white;
+    }
+
+    .white-button {
+      background-color: white;
+      color: black;
+    }
+
+    .pink-button {
+      background-color: pink;
+      color: white;
+    }
+
+    .soft-blue-button {
+      background-color: lightblue;
+      color: white;
+    }
+
+    .soft-yellow-button {
+      background-color: lightyellow;
+      color: black;
+    }
+
+    .light-brown-button {
+      background-color: #f0e6d2;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <button class="blue-button" onclick="changeColors()">GO</button>
+
+  <script>
+    let backgroundColors = ['white', 'red', 'green', 'white', 'black', 'white', 'pink', 'lightblue', 'lightyellow', '#f0e6d2'];
+    let buttonColors = ['blue', 'yellow', 'black', 'red', 'white', 'pink', 'lightblue', 'lightyellow', '#f0e6d2'];
+    let stopBackgroundColors = ['white', 'pink', 'lightyellow', 'lightblue', 'black'];
+    let stopButtonColors = ['white', 'pink', 'lightblue', 'lightyellow', 'red'];
+    let currentBackgroundIndex = 0;
+    let currentButtonIndex = 0;
+    let clickCounter = 0;
+
+    function changeColors() {
+      if (clickCounter >= 5) {
+        document.querySelector('.blue-button').textContent = 'STOP';
+        document.querySelector('.blue-button').style.backgroundColor = stopButtonColors[currentButtonIndex];
+        document.body.style.backgroundColor = stopBackgroundColors[currentBackgroundIndex];
+        currentBackgroundIndex = (currentBackgroundIndex + 1) % stopBackgroundColors.length;
+        currentButtonIndex = (currentButtonIndex + 1) % stopButtonColors.length;
+      } else {
+        document.body.style.backgroundColor = backgroundColors[currentBackgroundIndex];
+        document.querySelector('.blue-button').style.backgroundColor = buttonColors[currentButtonIndex];
+        currentBackgroundIndex = (currentBackgroundIndex + 1) % backgroundColors.length;
+        currentButtonIndex = (currentButtonIndex + 1) % buttonColors.length;
+      }
+
+      clickCounter++;
+    }
+  </script>
+</body>
+</html>
+
